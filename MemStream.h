@@ -64,7 +64,7 @@ public:
   virtual void flush();
 
   void setBufferContent(uint8_t *buffer, uint16_t content_len);
-  void setBufferContentFromProgmem(uint8_t *buffer, uint16_t content_len);
+  void setBufferContentFromProgmem(const uint8_t *buffer, uint16_t content_len);
   void setBufferContentPosition(uint16_t read_pos, uint16_t write_pos);
 
   using Print::write;
