@@ -1,9 +1,7 @@
 #include <MemStream.h>
-#include <avr/pgmspace.h>
-
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println();
 
   testFromFlashMem();
@@ -57,8 +55,8 @@ void testFromProgMem() {
   unsigned char buf[100];;
   // Initialize instance with a 100 byte buffer and 30 byte of available content, not writable
   MemStream testStream(buf,100,0,false);
-  const static PROGMEM unsigned char buf_init[30] = "0123456789ABCDEFGHIJKLMNOPQRST";
-  testStream.setBufferContentFromProgmem(buf_init, 30);
+  const static PROGMEM uint8_t buf_init[30+1] = "0123456789ABCDEFGHIJKLMNOPQRST";
+  testStream.setBufferContentFromProgmem(buf_init, sizeof(buf_init));
   // add three more characters
   testStream.write("XYZ");
   // print out all available characters
